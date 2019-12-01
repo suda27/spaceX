@@ -7,6 +7,7 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import {HttpClientModule} from '@angular/common/http';
 import { RocketSvgComponent } from './shared/rocket-svg/rocket-svg.component';
 import { CountdownSvgComponent } from './shared/countdown-svg/countdown-svg.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 
 
@@ -15,7 +16,8 @@ import { CountdownSvgComponent } from './shared/countdown-svg/countdown-svg.comp
     AppComponent,
     LoaderComponent,
     RocketSvgComponent,
-    CountdownSvgComponent
+    CountdownSvgComponent,
+    NavbarComponent
    
   ],
   imports: [
