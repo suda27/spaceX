@@ -1,4 +1,9 @@
-.clouds {
+.svg-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .clouds {
     display: block;
     -webkit-animation: verticalScroll 3s infinite ease-in;
     -moz-animation: verticalScroll 3s infinite ease-in;

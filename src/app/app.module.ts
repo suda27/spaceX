@@ -3,14 +3,25 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoaderComponent } from './shared/loader/loader.component';
+import {HttpClientModule} from '@angular/common/http';
+import { RocketSvgComponent } from './shared/rocket-svg/rocket-svg.component';
+import { CountdownSvgComponent } from './shared/countdown-svg/countdown-svg.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoaderComponent,
+    RocketSvgComponent,
+    CountdownSvgComponent
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
