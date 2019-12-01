@@ -1,4 +1,6 @@
+<spacex-navbar *ngIf='navBarLoad'></spacex-navbar>
 <spacex-countdown-svg *ngIf='loaderSvg'>
 </spacex-countdown-svg>
 <spacex-rocket-svg *ngIf='rocketSvg'>
 </spacex-rocket-svg>
+<router-outlet></router-outlet>

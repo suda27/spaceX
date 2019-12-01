@@ -14,13 +14,17 @@ export class AppComponent implements OnInit {
 
   title = 'spacex';
   rocketSvg: boolean = false;
-  loaderSvg :boolean = true;
+  loaderSvg: boolean = true;
+  navBarLoad: boolean = false;
   async ngOnInit() {
+    // this.navBarLoad = true;
     await this.delaySvc.delay(3500);
     this.loaderSvg = false;
     this.rocketSvg = true;
-    await this.delaySvc.delay(3000);
+    await this.delaySvc.delay(2500);
     this.rocketSvg = false;
+    this.navBarLoad = true;
+    
   }
 
   constructor(private http: HttpClient, private delaySvc: DelayService) {
