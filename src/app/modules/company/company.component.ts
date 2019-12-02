@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CompanyService } from './company.service';
+import { Company } from 'src/app/models/company';
 
 @Component({
   selector: 'spacex-company',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private companySvc: CompanyService) { }
 
+  companyInfo: Company;
+  
   ngOnInit() {
+
+    this.companySvc.getCompanyInfo().subscribe({
+      next: companyInfo => {
+        this.companyInfo = companyInfo;
+        console.log(this.companyInfo.headquarters.address)
+      }
+    })
   }
 
 }
