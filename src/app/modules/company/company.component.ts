@@ -11,15 +11,13 @@ export class CompanyComponent implements OnInit {
 
   constructor(private companySvc: CompanyService) { }
 
-  companyInfo: Company;
-  
+  companyInfo: Company = undefined;
+
   ngOnInit() {
 
     this.companySvc.getCompanyInfo().subscribe({
-      next: companyInfo => {
-        this.companyInfo = companyInfo;
-        console.log(this.companyInfo.headquarters.address)
-      }
+      next: companyInfo =>
+        this.companyInfo = companyInfo
     })
   }
 
