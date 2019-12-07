@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'spacex-loader',
   templateUrl: './loader.component.html',

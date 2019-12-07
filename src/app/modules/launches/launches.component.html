@@ -1,4 +1,8 @@
 <h1 style="color: white">
     launches works!
+    <div *ngIf='(launchInfo == undefined)'>
+        <spacex-loader></spacex-loader>
+      </div>
+      <div>{{launchInfo?.launch_date_unix * 1000 | date:'yyyy-MM-dd HH:mm:ss '}}</div>
   </h1>
   

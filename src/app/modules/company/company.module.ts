@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompanyComponent } from './company.component';
-import { LoaderComponent } from '../../shared/loader/loader.component'
+
 import { ButtonModule } from 'primeng/button';
+import { SharedModule } from '../../shared/shared.module';
+
 
 
 @NgModule({
-  declarations: [CompanyComponent, LoaderComponent],
+  declarations: [CompanyComponent],
   imports: [
     CommonModule,
-    ButtonModule
+    ButtonModule,
+    SharedModule
   ]
+
 })
 export class CompanyModule { }

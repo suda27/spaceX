@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Launch } from 'src/app/models/launch';
+import { LaunchesService } from './launches.service';
 
 @Component({
   selector: 'spacex-launches',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LaunchesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private launchSvc: LaunchesService) { }
+
+  launchInfo: Launch = undefined;
 
   ngOnInit() {
+
+    this.launchSvc.getNextLaunchInfo().subscribe({
+      next: launchInfo => {
+        this.launchInfo = launchInfo;
+        console.log(this.launchInfo);
+      }
+    })
+
   }
 
 }

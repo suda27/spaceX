@@ -65,11 +65,16 @@
           <br><br>
         </li>
         <li class="w3-padding-16">
-            <a href='{{companyInfo.links.website}}'> <img src="../../../assets/images/logo/spaceX.png" alt="Flickr"
-                class="w3-left w3-margin-right" style="width:50px"></a>
-            <span>Official Webiste</span>
-            <br><br>
-          </li>
+          <a href='{{companyInfo.links.website}}'> <img src="../../../assets/images/logo/spaceX.png" alt="Flickr"
+              class="w3-left w3-margin-right" style="width:50px"></a>
+          <span>Official Webiste</span>
+          <br><br>
+        </li>
       </ul>
     </div>
     <hr>
+  </div>
+</div>
+<div *ngIf='(companyInfo == undefined)'>
+  <spacex-loader></spacex-loader>
+</div>
