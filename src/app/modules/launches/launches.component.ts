@@ -15,7 +15,13 @@ export class LaunchesComponent implements OnInit {
 
   ngOnInit() {
 
-   
+    this.launchSvc.getSingleLaunchInfo(1).subscribe({
+      next: launchData => {
+      this.launchInfo = launchData;
+        console.log(this.launchInfo);
+      },
+      error: err => console.error(err)
+    })
 
   }
 

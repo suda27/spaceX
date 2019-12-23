@@ -9,9 +9,14 @@ import { Launch } from 'src/app/models/launch';
 })
 export class LaunchesService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
+  private allLaunchApi = 'https://api.spacexdata.com/v3/launches';
   private nextLaunchApi = 'https://api.spacexdata.com/v3/launches/next';
+  private pastLaunchApi = 'https://api.spacexdata.com/v3/launches/past';
+  private upcomingLaunchApi = 'https://api.spacexdata.com/v3/launches/upcoming';
+  private latestLaunchApi = 'https://api.spacexdata.com/v3/launches/latest';
+
 
   getNextLaunchInfo(): Observable<Launch> {
     return this.http.get<Launch>(this.nextLaunchApi).pipe(
@@ -19,6 +24,41 @@ export class LaunchesService {
       catchError(this.handleError)
     );
   }
+
+  getpastLaunchInfo(): Observable<Launch[]> {
+    return this.http.get<Launch[]>(this.pastLaunchApi).pipe(
+      tap(data => console.log('All : ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  getUpcomingLaunchInfo(): Observable<Launch> {
+    return this.http.get<Launch>(this.upcomingLaunchApi).pipe(
+      tap(data => console.log('All : ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  getLatestLaunchInfo(): Observable<Launch> {
+    return this.http.get<Launch>(this.latestLaunchApi).pipe(
+      tap(data => console.log('All : ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+  getAllLaunchInfo(): Observable<Launch[]> {
+    return this.http.get<Launch[]>(this.allLaunchApi).pipe(
+      tap(data => console.log('All : ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  getSingleLaunchInfo(flightNumber: number): Observable<Launch> {
+    return this.http.get<Launch>(this.allLaunchApi + '/' + flightNumber).pipe(
+      tap(data => console.log('All : ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
 
   private handleError(err: HttpErrorResponse) {
     // in a real world app, we may send the server to some remote logging infrastructure
