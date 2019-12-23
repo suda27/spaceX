@@ -1,8 +1,126 @@
-<h1 style="color: white">
-    launches works!
-    <div *ngIf='(launchInfo == undefined)'>
-        <spacex-loader></spacex-loader>
+<!-- <h1 style="color: white">
+  launches works!
+  <div *ngIf='(launchInfo == undefined)'>
+    <spacex-loader></spacex-loader>
+  </div>
+  <div>{{launchInfo?.launch_date_unix * 1000 | date:'yyyy-MM-dd HH:mm:ss '}}</div>
+</h1>
+
+<div class="w3-container w3-white">
+  <div class="w3-row">
+    <div class="w3-container w3-half">
+      <h2>w3-half</h2>
+    </div>
+    <div class="w3-container w3-half">
+      <h2>w3-half</h2>
+    </div>
+    <div class="w3-container w3-half">
+      <h2>w3-half</h2>
+    </div>
+  </div>
+</div> -->
+
+<div class="w3-container">
+  <div class="w3-row ">
+    <div class="w3-center">
+      <h1 class="spacex-white-text-font">Launches</h1>
+    </div>
+    <div class="w3-container w3-third">
+      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/next']">
+        <img src="../../../assets/images/nextLaunch.png" alt="users" style="width:480px" height="300px">
+        <div class="w3-container"><br>
+          <div class="spacex-white-text-font">
+            <h3><b>Next Launch</b></h3>
+            <h5>The Next Launch, <span class="w3-opacity">(All flight informations)</span></h5>
+
+            <!-- <countdown [config]="{leftTime: 30}"></countdown> -->
+            <hr>
+            <div class="w3-container">
+              <p>Click to know more about the next Launch.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>{{launchInfo?.launch_date_unix * 1000 | date:'yyyy-MM-dd HH:mm:ss '}}</div>
-  </h1>
-  
+    </div>
+    <div class="w3-container w3-third">
+      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/latest']">
+        <img src="../../../assets/images/latestLaunch.png" alt="users" style="width:480px" height="300px">
+        <div class="w3-container"><br>
+          <div class="spacex-white-text-font">
+            <h3><b>Latest Launch</b></h3>
+            <h5>The Latest Launch, <span class="w3-opacity">(All flight informations)</span></h5>
+            <hr>
+            <div class="w3-container">
+              <p>Click to know more about the Latest Launch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container w3-third">
+      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/upcoming']">
+        <img src="../../../assets/images/upcomingLaunch.png" alt="users" style="width:480px" height="300px">
+        <div class="w3-container"><br>
+          <div class="spacex-white-text-font">
+            <h3><b>Upcoming Launches</b></h3>
+            <h5>The Upcoming Launches, <span class="w3-opacity">(All flight informations)</span></h5>
+            <hr>
+            <div class="w3-container">
+              <p>Click to know more about the Upcoming Launches.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container w3-third">
+      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/find']">
+        <img src="../../../assets/images/findLaunch.png" alt="users" style="width:480px" height="300px">
+        <div class="w3-container"><br>
+          <div class="spacex-white-text-font">
+            <h3><b>Find one Launch</b></h3>
+            <h5>To find a particular Launch, <span class="w3-opacity">(All flight informations)</span></h5>
+            <hr>
+            <div class="w3-container">
+              <p>Click to find more about a particular Launch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container w3-third">
+      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/past']">
+        <img src="../../../assets/images/pastLaunches.png" alt="users" style="width:480px" height="300px">
+        <div class="w3-container"><br>
+          <div class="spacex-white-text-font">
+            <h3><b>Past Launches</b></h3>
+            <h5>The Past Launches, <span class="w3-opacity">(All flight informations)</span></h5>
+            <hr>
+            <div class="w3-container">
+              <p>Click to know more about the Past Launches.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-container w3-third">
+      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/all']">
+        <img src="../../../assets/images/AllLaunches.png" alt="users" style="width:480px" height="300px">
+        <div class="w3-container"><br>
+          <div class="spacex-white-text-font">
+            <h3><b>All Launches</b></h3>
+            <h5>All Launches, <span class="w3-opacity">(All flight informations)</span></h5>
+            <hr>
+            <div class="w3-container">
+              <p>Click to know more about all the Launches.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

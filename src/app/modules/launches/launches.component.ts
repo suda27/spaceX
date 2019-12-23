@@ -15,12 +15,7 @@ export class LaunchesComponent implements OnInit {
 
   ngOnInit() {
 
-    this.launchSvc.getNextLaunchInfo().subscribe({
-      next: launchInfo => {
-        this.launchInfo = launchInfo;
-        console.log(this.launchInfo);
-      }
-    })
+   
 
   }
 

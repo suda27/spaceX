@@ -11,6 +11,7 @@ import { CompanyModule } from './modules/company/company.module';
 import { LaunchesModule } from './modules/launches/launches.module';
 import { MissionsModule } from './modules/missions/missions.module';
 import { TimerComponent } from './shared/timer/timer.component';
+import { LaunchesViewComponent } from './views/launches-view/launches-view.component';
 
 
 
@@ -20,7 +21,8 @@ import { TimerComponent } from './shared/timer/timer.component';
     RocketSvgComponent,
     CountdownSvgComponent,
     NavbarComponent,
-    TimerComponent
+    TimerComponent,
+    LaunchesViewComponent
 
   ],
   imports: [
