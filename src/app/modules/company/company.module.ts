@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompanyComponent } from './company.component';
-
-import { ButtonModule } from 'primeng/button';
 import { SharedModule } from '../../shared/shared.module';
 
 
@@ -11,7 +9,6 @@ import { SharedModule } from '../../shared/shared.module';
   declarations: [CompanyComponent],
   imports: [
     CommonModule,
-    ButtonModule,
     SharedModule
   ]
 

@@ -1,3 +1,118 @@
-<h1 style="color: white">
-  missions works!
-</h1>
+<div *ngIf='!(missionInfo == undefined)'>
+  <p-carousel [value]="missionInfo" styleClass="custom-carousel spacex-white-text-font" [numVisible]="3" [numScroll]="1"
+    [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+    <br>
+    <p-header class="w3-center">
+      <h3>All Missions</h3>
+    </p-header>
+    <ng-template let-mission pTemplate="item">
+      <div class="car-details">
+        <div class="p-grid p-nogutter">
+          <div class="p-col-12 w3-center">
+            <spacex-mission-svg></spacex-mission-svg>
+          </div>
+          <div class="p-col-12 car-data w3-center" (click)='selectMission(mission)' style="cursor: pointer">
+            <div class="car-title">
+              <h2>Mission Name </h2>
+              <h1>{{mission.mission_name}}</h1>
+            </div>
+            <div class="car-subtitle">Mission id : {{mission.mission_id}}</div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+
+  <div class="w3-container spacex-white-text-font">
+    <h2> Find Mission</h2>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" [(ngModel)]='missionId' size="30" class="spacex-white-text-font" pInputText>
+      <label for="float-input">Mission Id</label>&nbsp;
+      <button pButton type="button" label="Find" (click)="findMission($event)"
+        class="ui-button-rounded ui-button-success"></button>
+    </span>
+
+  </div>
+  <div *ngIf='!(singleMissionInfo == undefined)' class="w3-container spacex-white-text-font w3-row">
+
+    <div class="w3-col l8 s12">
+      <!-- Blog entry -->
+      <div class="w3-card-4 w3-margin">
+        <img src="../../../assets/images/missions.png" alt="Nature" style="width:100%">
+        <div class="w3-container">
+          <h3><b class="spacex-white-text-font">{{singleMissionInfo.mission_name}}</b></h3>
+          <h5 class="spacex-white-text-font">Mission Id: <span
+              class="w3-opacity spacex-white-text-font">{{singleMissionInfo.mission_id}}</span></h5>
+        </div>
+
+        <div class="w3-container">
+          <h5 class="spacex-white-text-font">Description <span
+              class="w3-opacity spacex-white-text-font">{{singleMissionInfo.description}}</span></h5>
+
+        </div>
+      </div>
+      <hr>
+      <div class="w3-card w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h3 class="spacex-white-text-font w3-center">MANUFACTURERS</h3>
+        </div>
+        <ul *ngFor='let manufacturers of singleMissionInfo.manufacturers'
+          class="w3-ul spacex-white-text-font  w3-hoverable">
+          <li class="w3-padding-16 w3-center">
+            <span>{{manufacturers}}</span>
+            <br><br>
+          </li>
+        </ul>
+      </div>
+      <hr>
+
+      <div class="w3-card w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h3 class="spacex-white-text-font w3-center">FOLLOW US ON</h3>
+        </div>
+        <ul class="w3-ul w3-hoverable spacex-white-text-font">
+          <li class="w3-padding-16">
+            <a href='{{singleMissionInfo.twitter}}' target="_blank"> <img src="../../../assets/images/logo/twitter.png"
+                alt="Twitter" class="w3-left w3-margin-right" style="width:50px"></a>
+            <span>Twitter</span>
+            <br><br>
+          </li>
+          <li class="w3-padding-16">
+            <a href='{{singleMissionInfo.wikipedia}}' target="_blank"> <img
+                src="../../../assets/images/logo/wikiepedia.png" alt="Wikipedia" class="w3-left w3-margin-right"
+                style="width:50px"></a>
+            <span>Wikipedia</span>
+            <br><br>
+          </li>
+          <li class="w3-padding-16">
+            <a href='{{singleMissionInfo.website}}' target="_blank"> <img src="../../../assets/images/logo/spaceX.png"
+                alt="Official website" class="w3-left w3-margin-right" style="width:50px"></a>
+            <span>Official Webiste</span>
+            <br><br>
+          </li>
+        </ul>
+      </div>
+      <hr>
+    </div>
+    <div class="w3-col l4">
+      <div class="w3-card w3-margin">
+        <div class="w3-container w3-padding w3-black">
+          <h3 class="spacex-white-text-font w3-center">PAYLOADS</h3>
+        </div>
+        <ul *ngFor='let payloads of singleMissionInfo.payload_ids' class="w3-ul spacex-white-text-font  w3-hoverable">
+          <li class="w3-padding-16 w3-center">
+            <span>{{payloads}}</span>
+            <br><br>
+          </li>
+        </ul>
+      </div>
+      <hr>
+    </div>
+
+  </div>
+
+</div>
+
+<div *ngIf='(missionInfo == undefined)'>
+  <spacex-loader></spacex-loader>
+</div>
