@@ -10,7 +10,6 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { CompanyModule } from './modules/company/company.module';
 import { LaunchesModule } from './modules/launches/launches.module';
 import { MissionsModule } from './modules/missions/missions.module';
-import { TimerComponent } from './shared/timer/timer.component';
 import { LaunchesViewComponent } from './views/launches-view/launches-view.component';
 
 
@@ -21,7 +20,6 @@ import { LaunchesViewComponent } from './views/launches-view/launches-view.compo
     RocketSvgComponent,
     CountdownSvgComponent,
     NavbarComponent,
-    TimerComponent,
     LaunchesViewComponent
 
   ],
