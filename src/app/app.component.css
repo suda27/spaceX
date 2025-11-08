@@ -1,18 +1,27 @@
-.w3-animate-fading{
-  animation:fading 100s infinite
+/* App Component Styles */
+:host {
+  display: block;
+  min-height: 100vh;
+  position: relative;
 }
 
-@keyframes fading{
-  0%{
-    opacity:0
+/* Smooth transitions for loader animations */
+.w3-animate-fading {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
-  50%{
-    opacity:1
-  }
-  100%{
-    opacity:0
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-
-
+/* Router outlet animation */
+router-outlet + * {
+  animation: fadeIn 0.5s ease-out;
+}

@@ -51,7 +51,10 @@ export class MissionsComponent implements OnInit {
     console.log(this.missionInfo);
   }
 
-  findMission() {
+  findMission(event?: any) {
+    if (event) {
+      event.preventDefault();
+    }
     this.missionSvc.getSingleMisionsInfo(this.missionId).subscribe({
       next: data => {
         this.singleMissionInfo = data;

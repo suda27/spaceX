@@ -1,126 +1,167 @@
-<!-- <h1 style="color: white">
-  launches works!
-  <div *ngIf='(launchInfo == undefined)'>
-    <spacex-loader></spacex-loader>
+<div class="modern-container fade-in">
+  <div class="w3-center" style="margin-bottom: 4rem; padding-top: 2rem;">
+    <h1 class="text-gradient" style="margin-bottom: 1rem;">SpaceX Launches</h1>
+    <p class="text-secondary" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+      Explore all SpaceX launch missions, from past achievements to upcoming adventures in space
+    </p>
   </div>
-  <div>{{launchInfo?.launch_date_unix * 1000 | date:'yyyy-MM-dd HH:mm:ss '}}</div>
-</h1>
 
-<div class="w3-container w3-white">
-  <div class="w3-row">
-    <div class="w3-container w3-half">
-      <h2>w3-half</h2>
-    </div>
-    <div class="w3-container w3-half">
-      <h2>w3-half</h2>
-    </div>
-    <div class="w3-container w3-half">
-      <h2>w3-half</h2>
-    </div>
-  </div>
-</div> -->
-
-<div class="w3-container">
-  <div class="w3-row ">
-    <div class="w3-center">
-      <h1 class="spacex-white-text-font">Launches</h1>
-    </div>
-    <div class="w3-container w3-third">
-      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/next']">
-        <img src="../../../assets/images/nextLaunch.png" alt="users" style="width:480px" height="300px">
-        <div class="w3-container"><br>
-          <div class="spacex-white-text-font">
-            <h3><b>Next Launch</b></h3>
-            <h5>The Next Launch, <span class="w3-opacity">(All flight informations)</span></h5>
-
-            <!-- <countdown [config]="{leftTime: 30}"></countdown> -->
-            <hr>
-            <div class="w3-container">
-              <p>Click to know more about the next Launch.</p>
-            </div>
-          </div>
+  <div class="modern-grid">
+    <!-- Next Launch Card -->
+    <div class="modern-card act-as-link slide-in-left" [routerLink]="['/launches/next']" style="animation-delay: 0.1s;">
+      <div style="position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem; height: 280px;">
+        <img src="../../../assets/images/nextLaunch.png" alt="Next Launch" style="width:100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));"></div>
+        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px;">
+          <h3 style="margin: 0; font-size: 1.75rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">Next Launch</h3>
+          <div style="width: 60px; height: 3px; background: var(--gradient-accent); margin-top: 10px; border-radius: 2px;"></div>
         </div>
       </div>
-    </div>
-    <div class="w3-container w3-third">
-      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/latest']">
-        <img src="../../../assets/images/latestLaunch.png" alt="users" style="width:480px" height="300px">
-        <div class="w3-container"><br>
-          <div class="spacex-white-text-font">
-            <h3><b>Latest Launch</b></h3>
-            <h5>The Latest Launch, <span class="w3-opacity">(All flight informations)</span></h5>
-            <hr>
-            <div class="w3-container">
-              <p>Click to know more about the Latest Launch.</p>
-            </div>
-          </div>
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+          <div style="width: 8px; height: 8px; background: var(--accent-primary); border-radius: 50%; animation: pulse 2s infinite;"></div>
+          <span class="text-secondary" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Upcoming Mission</span>
+        </div>
+        <p class="text-secondary" style="line-height: 1.7; margin-bottom: 1.5rem;">
+          Get detailed information about the next scheduled SpaceX launch, including mission details, timeline, and rocket specifications.
+        </p>
+        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-primary); font-weight: 600;">
+          <span>View Details</span>
+          <span style="transition: transform 0.3s;">→</span>
         </div>
       </div>
     </div>
 
-    <div class="w3-container w3-third">
-      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/upcoming']">
-        <img src="../../../assets/images/upcomingLaunch.png" alt="users" style="width:480px" height="300px">
-        <div class="w3-container"><br>
-          <div class="spacex-white-text-font">
-            <h3><b>Upcoming Launches</b></h3>
-            <h5>The Upcoming Launches, <span class="w3-opacity">(All flight informations)</span></h5>
-            <hr>
-            <div class="w3-container">
-              <p>Click to know more about the Upcoming Launches.</p>
-            </div>
-          </div>
+    <!-- Latest Launch Card -->
+    <div class="modern-card act-as-link slide-in-left" [routerLink]="['/launches/latest']" style="animation-delay: 0.2s;">
+      <div style="position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem; height: 280px;">
+        <img src="../../../assets/images/latestLaunch.png" alt="Latest Launch" style="width:100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));"></div>
+        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px;">
+          <h3 style="margin: 0; font-size: 1.75rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">Latest Launch</h3>
+          <div style="width: 60px; height: 3px; background: var(--gradient-accent); margin-top: 10px; border-radius: 2px;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+          <div style="width: 8px; height: 8px; background: #00ff88; border-radius: 50%;"></div>
+          <span class="text-secondary" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Most Recent</span>
+        </div>
+        <p class="text-secondary" style="line-height: 1.7; margin-bottom: 1.5rem;">
+          Discover the most recent SpaceX launch with complete mission data, outcomes, and post-launch analysis.
+        </p>
+        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-primary); font-weight: 600;">
+          <span>View Details</span>
+          <span style="transition: transform 0.3s;">→</span>
         </div>
       </div>
     </div>
 
-    <div class="w3-container w3-third">
-      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/find']">
-        <img src="../../../assets/images/findLaunch.png" alt="users" style="width:480px" height="300px">
-        <div class="w3-container"><br>
-          <div class="spacex-white-text-font">
-            <h3><b>Find one Launch</b></h3>
-            <h5>To find a particular Launch, <span class="w3-opacity">(All flight informations)</span></h5>
-            <hr>
-            <div class="w3-container">
-              <p>Click to find more about a particular Launch.</p>
-            </div>
-          </div>
+    <!-- Upcoming Launches Card -->
+    <div class="modern-card act-as-link slide-in-right" [routerLink]="['/launches/upcoming']" style="animation-delay: 0.3s;">
+      <div style="position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem; height: 280px;">
+        <img src="../../../assets/images/upcomingLaunch.png" alt="Upcoming Launches" style="width:100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));"></div>
+        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px;">
+          <h3 style="margin: 0; font-size: 1.75rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">Upcoming Launches</h3>
+          <div style="width: 60px; height: 3px; background: var(--gradient-accent); margin-top: 10px; border-radius: 2px;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+          <div style="width: 8px; height: 8px; background: var(--accent-secondary); border-radius: 50%;"></div>
+          <span class="text-secondary" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Future Missions</span>
+        </div>
+        <p class="text-secondary" style="line-height: 1.7; margin-bottom: 1.5rem;">
+          Browse all upcoming SpaceX launches scheduled for the future. Stay updated with mission timelines and objectives.
+        </p>
+        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-primary); font-weight: 600;">
+          <span>View Details</span>
+          <span style="transition: transform 0.3s;">→</span>
         </div>
       </div>
     </div>
 
-    <div class="w3-container w3-third">
-      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/past']">
-        <img src="../../../assets/images/pastLaunches.png" alt="users" style="width:480px" height="300px">
-        <div class="w3-container"><br>
-          <div class="spacex-white-text-font">
-            <h3><b>Past Launches</b></h3>
-            <h5>The Past Launches, <span class="w3-opacity">(All flight informations)</span></h5>
-            <hr>
-            <div class="w3-container">
-              <p>Click to know more about the Past Launches.</p>
-            </div>
-          </div>
+    <!-- Past Launches Card -->
+    <div class="modern-card act-as-link slide-in-right" [routerLink]="['/launches/past']" style="animation-delay: 0.4s;">
+      <div style="position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem; height: 280px;">
+        <img src="../../../assets/images/pastLaunches.png" alt="Past Launches" style="width:100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));"></div>
+        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px;">
+          <h3 style="margin: 0; font-size: 1.75rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">Past Launches</h3>
+          <div style="width: 60px; height: 3px; background: var(--gradient-accent); margin-top: 10px; border-radius: 2px;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+          <div style="width: 8px; height: 8px; background: var(--text-tertiary); border-radius: 50%;"></div>
+          <span class="text-secondary" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Historical Missions</span>
+        </div>
+        <p class="text-secondary" style="line-height: 1.7; margin-bottom: 1.5rem;">
+          Explore the complete history of SpaceX launches, from early missions to recent achievements.
+        </p>
+        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-primary); font-weight: 600;">
+          <span>View Details</span>
+          <span style="transition: transform 0.3s;">→</span>
         </div>
       </div>
     </div>
 
-    <div class="w3-container w3-third">
-      <div class="w3-margin shadow act-as-link" [routerLink]="['/launches/all']">
-        <img src="../../../assets/images/AllLaunches.png" alt="users" style="width:480px" height="300px">
-        <div class="w3-container"><br>
-          <div class="spacex-white-text-font">
-            <h3><b>All Launches</b></h3>
-            <h5>All Launches, <span class="w3-opacity">(All flight informations)</span></h5>
-            <hr>
-            <div class="w3-container">
-              <p>Click to know more about all the Launches.</p>
-            </div>
-          </div>
+    <!-- Find Launch Card -->
+    <div class="modern-card act-as-link slide-in-left" [routerLink]="['/launches/find']" style="animation-delay: 0.5s;">
+      <div style="position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem; height: 280px;">
+        <img src="../../../assets/images/findLaunch.png" alt="Find Launch" style="width:100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));"></div>
+        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px;">
+          <h3 style="margin: 0; font-size: 1.75rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">Find Launch</h3>
+          <div style="width: 60px; height: 3px; background: var(--gradient-accent); margin-top: 10px; border-radius: 2px;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+          <div style="width: 8px; height: 8px; background: var(--accent-tertiary); border-radius: 50%;"></div>
+          <span class="text-secondary" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Search Missions</span>
+        </div>
+        <p class="text-secondary" style="line-height: 1.7; margin-bottom: 1.5rem;">
+          Search for a specific launch by flight number, mission name, or date. Find detailed information about any mission.
+        </p>
+        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-primary); font-weight: 600;">
+          <span>View Details</span>
+          <span style="transition: transform 0.3s;">→</span>
         </div>
       </div>
     </div>
 
+    <!-- All Launches Card -->
+    <div class="modern-card act-as-link slide-in-right" [routerLink]="['/launches/all']" style="animation-delay: 0.6s;">
+      <div style="position: relative; overflow: hidden; border-radius: 12px; margin-bottom: 1.5rem; height: 280px;">
+        <img src="../../../assets/images/AllLaunches.png" alt="All Launches" style="width:100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));"></div>
+        <div style="position: absolute; bottom: 20px; left: 20px; right: 20px;">
+          <h3 style="margin: 0; font-size: 1.75rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.8);">All Launches</h3>
+          <div style="width: 60px; height: 3px; background: var(--gradient-accent); margin-top: 10px; border-radius: 2px;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+          <div style="width: 8px; height: 8px; background: var(--accent-primary); border-radius: 50%;"></div>
+          <span class="text-secondary" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Complete Archive</span>
+        </div>
+        <p class="text-secondary" style="line-height: 1.7; margin-bottom: 1.5rem;">
+          Access the complete database of all SpaceX launches. Filter, sort, and explore every mission in detail.
+        </p>
+        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-primary); font-weight: 600;">
+          <span>View Details</span>
+          <span style="transition: transform 0.3s;">→</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<style>
+.act-as-link:hover span:last-child {
+  transform: translateX(5px);
+}
+</style>
+

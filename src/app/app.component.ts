@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   }
 
   getData(): Observable<any> {
-    return this.http.get('https://api.spacexdata.com/v3/rockets')
+    return this.http.get('https://api.spacexdata.com/v4/rockets')
   }
 
   delay(ms: number) {

@@ -1,17 +1,16 @@
-<div class="container  circleBehind w3-animate-fading w3-black">
-  <a [routerLink]="['']">
-    <img src='../../../assets/images/logo/spaceX.png' style="width:45px; height: 25px; right: 0" />
+<div class="navbar-container circleBehind w3-animate-fading">
+  <a [routerLink]="['']" class="navbar-logo-link">
+    <img src='../../../assets/images/logo/spaceX.png' class="navbar-logo" alt="SpaceX Logo" />
   </a>
+  <a [routerLink]="['/launches']">Launches</a>
   <a [routerLink]="['/missions']">Missions</a>
   <a [routerLink]="['/company']">Company</a>
-  <a [routerLink]="['/launches']">Launches</a>
-  <a>Rockets</a>
-  <a>Ships</a>
-  <a>Capsules</a>
-  <a>Landing pads</a>
-  <a>Cores</a>
-  <a>Dragons</a>
-  <a>History</a>
-  <a>Payloads</a>
-  <a>Roadster</a>
+  <a [routerLink]="['/rockets']">Rockets</a>
+  <a [routerLink]="['/ships']">Ships</a>
+  <a [routerLink]="['/capsules']">Capsules</a>
+  <a [routerLink]="['/landing-pads']">Landing Pads</a>
+  <a [routerLink]="['/cores']">Cores</a>
+  <a [routerLink]="['/dragons']">Dragons</a>
+  <a [routerLink]="['/history']">History</a>
+  <a [routerLink]="['/payloads']">Payloads</a>
 </div>

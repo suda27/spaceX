@@ -11,7 +11,7 @@ export class CompanyService {
 
   constructor(private http: HttpClient) { }
 
-  private companyInfoUrl = 'https://api.spacexdata.com/v3/info';
+  private companyInfoUrl = 'https://api.spacexdata.com/v4/company';
 
   getCompanyInfo(): Observable<Company> {
     return this.http.get<Company>(this.companyInfoUrl).pipe(

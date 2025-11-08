@@ -13,7 +13,8 @@ export class MissionsService {
   constructor(private http: HttpClient) { }
   
 
-  private allMissionApi = 'https://api.spacexdata.com/v3/missions';
+  private baseApiUrl = 'https://api.spacexdata.com/v4';
+  private allMissionApi = `${this.baseApiUrl}/payloads`;
 
   getAllMisionsInfo(): Observable<Mission[]> {
     console.log('called ')

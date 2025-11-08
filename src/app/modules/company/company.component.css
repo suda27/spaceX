@@ -1,0 +1,15 @@
+/* Company component specific styles */
+.modern-container {
+  position: relative;
+  z-index: 1;
+  padding-top: 2rem;
+  min-height: 100vh;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .modern-container > div {
+    grid-template-columns: 1fr !important;
+  }
+}
+

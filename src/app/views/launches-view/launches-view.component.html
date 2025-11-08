@@ -1,3 +1,193 @@
-<div class="spacex-white-text-font">
-  launches-view works!
+<div class="modern-container fade-in">
+  <!-- Loading State -->
+  <div *ngIf="loading" class="modern-loader">
+    <div></div>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error && !loading" class="modern-card" style="text-align: center; max-width: 600px; margin: 4rem auto;">
+    <h3 class="text-gradient" style="color: #ff4444; margin-bottom: 1rem;">Error</h3>
+    <p class="text-secondary" style="margin-bottom: 2rem;">{{ error }}</p>
+    <button class="modern-button-secondary" (click)="goBack()">Go Back</button>
+  </div>
+
+  <!-- Single Launch View -->
+  <div *ngIf="!loading && !error && launchInfo && !launchesList.length" class="slide-in-left">
+    <div style="margin-bottom: 3rem; padding-top: 2rem;">
+      <button class="modern-button-secondary" (click)="goBack()" style="margin-bottom: 1.5rem;">
+        ← Back to Launches
+      </button>
+      <h1 class="text-gradient" style="margin-bottom: 1rem;">{{ launchInfo.mission_name || 'Launch Details' }}</h1>
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <div style="width: 8px; height: 8px; background: var(--accent-primary); border-radius: 50%;"></div>
+          <span class="text-secondary">Flight #{{ launchInfo.flight_number }}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <div style="width: 8px; height: 8px; background: var(--accent-secondary); border-radius: 50%;"></div>
+          <span class="text-secondary">{{ formatDate(launchInfo.launch_date_utc) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modern-card">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 3rem;">
+        <div>
+          <h3 class="text-gradient" style="margin-bottom: 1.5rem; font-size: 1.5rem;">Mission Information</h3>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div>
+              <div class="text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Mission Name</div>
+              <div class="text-primary" style="font-size: 1.2rem; font-weight: 600;">
+                {{ launchInfo.mission_name }}
+              </div>
+            </div>
+            <div>
+              <div class="text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Launch Year</div>
+              <div class="text-primary">{{ launchInfo.launch_year }}</div>
+            </div>
+            <div>
+              <div class="text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Launch Site</div>
+              <div class="text-primary">
+                {{ launchInfo.launch_site?.site_name_long || 'N/A' }}
+              </div>
+            </div>
+            <div>
+              <div class="text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Launch Success</div>
+              <div class="text-primary">
+                <span [style.color]="launchInfo.launch_success ? '#00ff88' : '#ff4444'" style="font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+                  <span>{{ launchInfo.launch_success ? '✓' : '✗' }}</span>
+                  <span>{{ launchInfo.launch_success ? 'Success' : 'Failed' }}</span>
+                </span>
+              </div>
+            </div>
+            <div>
+              <div class="text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Status</div>
+              <div class="text-primary">
+                <span [style.color]="launchInfo.upcoming ? 'var(--accent-primary)' : 'var(--text-secondary)'">
+                  {{ launchInfo.upcoming ? 'Upcoming' : 'Completed' }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-gradient" style="margin-bottom: 1.5rem; font-size: 1.5rem;">Rocket Information</h3>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div>
+              <div class="text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Rocket Name</div>
+              <div class="text-primary" style="font-size: 1.2rem; font-weight: 600;">
+                {{ launchInfo.rocket?.rocket_name || 'N/A' }}
+              </div>
+            </div>
+            <div>
+              <div class="text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Rocket Type</div>
+              <div class="text-primary">
+                {{ launchInfo.rocket?.rocket_type || 'N/A' }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="launchInfo.details" style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1);">
+        <h3 class="text-gradient" style="margin-bottom: 1.5rem; font-size: 1.5rem;">Mission Details</h3>
+        <p class="text-secondary" style="line-height: 1.8; font-size: 1.1rem;">
+          {{ launchInfo.details }}
+        </p>
+      </div>
+
+      <div *ngIf="launchInfo.links" style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1);">
+        <h3 class="text-gradient" style="margin-bottom: 1.5rem; font-size: 1.5rem;">Links</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a *ngIf="launchInfo.links.article_link" [href]="launchInfo.links.article_link" target="_blank" class="modern-button-secondary">
+            Article
+          </a>
+          <a *ngIf="launchInfo.links.video_link" [href]="launchInfo.links.video_link" target="_blank" class="modern-button-secondary">
+            Video
+          </a>
+          <a *ngIf="launchInfo.links.wikipedia" [href]="launchInfo.links.wikipedia" target="_blank" class="modern-button-secondary">
+            Wikipedia
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multiple Launches List View -->
+  <div *ngIf="!loading && !error && launchesList.length > 0" class="slide-in-left">
+    <div style="margin-bottom: 3rem; padding-top: 2rem;">
+      <button class="modern-button-secondary" (click)="goBack()" style="margin-bottom: 1.5rem;">
+        ← Back to Launches
+      </button>
+      <h1 class="text-gradient" style="margin-bottom: 1rem;">
+        {{ viewType === 'past' ? 'Past Launches' : 
+           viewType === 'upcoming' ? 'Upcoming Launches' : 
+           'All Launches' }}
+      </h1>
+      <p class="text-secondary" style="font-size: 1.1rem;">
+        Total: <span class="text-primary" style="color: var(--accent-primary); font-weight: 600;">{{ launchesList.length }}</span> launches
+      </p>
+    </div>
+
+    <div class="modern-grid">
+      <div *ngFor="let launch of launchesList; let i = index" class="modern-card act-as-link slide-in-left" 
+           [routerLink]="['/launches', launch.flight_number]"
+           [style.animation-delay]="(i * 0.1) + 's'">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <div style="flex: 1;">
+            <h3 class="text-gradient" style="margin: 0 0 0.5rem 0; font-size: 1.5rem;">{{ launch.mission_name }}</h3>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <span class="text-secondary" style="font-size: 0.9rem;">Flight #{{ launch.flight_number }}</span>
+              <span class="text-secondary" style="font-size: 0.9rem;">•</span>
+              <span class="text-secondary" style="font-size: 0.9rem;">{{ launch.launch_year }}</span>
+            </div>
+          </div>
+          <div [style.color]="launch.launch_success ? '#00ff88' : '#ff4444'" 
+               style="font-size: 2rem; font-weight: bold; margin-left: 1rem;">
+            {{ launch.launch_success ? '✓' : '✗' }}
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <div class="text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Launch Date</div>
+          <div class="text-primary">{{ formatDate(launch.launch_date_utc) }}</div>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <div class="text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Rocket</div>
+          <div class="text-primary" style="font-weight: 600;">
+            {{ launch.rocket?.rocket_name || 'N/A' }}
+          </div>
+        </div>
+
+        <div *ngIf="launch.details" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <p class="text-secondary" style="font-size: 0.95rem; line-height: 1.6; 
+             display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+            {{ launch.details }}
+          </p>
+        </div>
+
+        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-primary); font-weight: 600;">
+            <span>View Details</span>
+            <span style="transition: transform 0.3s;">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading && !error && !launchInfo && !launchesList.length" class="modern-card" style="text-align: center; max-width: 600px; margin: 4rem auto;">
+    <h3 class="text-gradient" style="margin-bottom: 1rem;">No Launch Data Available</h3>
+    <p class="text-secondary" style="margin-bottom: 2rem;">Unable to load launch information at this time.</p>
+    <button class="modern-button-secondary" (click)="goBack()">Go Back</button>
+  </div>
 </div>
+
+<style>
+.act-as-link:hover span:last-child {
+  transform: translateX(5px);
+}
+</style>

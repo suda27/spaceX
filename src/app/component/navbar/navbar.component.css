@@ -1,76 +1,122 @@
-div.container
-{
-    font-family: Raleway;
-    margin: 0 auto;
-	padding: 4em 4em;
-    text-align: center;
+.navbar-container {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  background: rgba(17, 17, 24, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: slideDown 0.5s ease-out;
 }
 
-div.container a
-{
-    color: #FFF;
-    text-decoration: none;
-    font: 20px Raleway;
-    margin: 0px 10px;
-    padding: 10px 10px;
-    position: relative;
-    z-index: 0;
-    cursor: pointer;
-}
-
-.blue
-{
-    background: #16181a;
-}
-
-/* Circle behind */
-div.circleBehind a:before, div.circleBehind a:after
-{
-    position: absolute;
-    top: 22px;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    border: 4px solid #0277bd;
-    transform: translateX(-50%) translateY(-50%) scale(0.8);
-    border-radius: 50%;
-    background: transparent;
-    content: "";
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
     opacity: 0;
-    transition: all 0.3s;
-    z-index: -1;
-}
-
-div.circleBehind a:after
-{
-    border-width: 2px;
-    transition: all 0.4s;
-}
-
-div.circleBehind a:hover:before
-{
+  }
+  to {
+    transform: translateY(0);
     opacity: 1;
-    transform: translateX(-50%) translateY(-50%) scale(1);
+  }
 }
 
-div.circleBehind a:hover:after
-{
-    opacity: 1;
-    transform: translateX(-50%) translateY(-50%) scale(1.3);
+.navbar-container a {
+  color: #b4b4c7;
+  text-decoration: none;
+  font: 500 15px 'Inter', sans-serif;
+  margin: 0 12px;
+  padding: 10px 18px;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border-radius: 8px;
 }
 
-.w3-animate-fading{
-    animation:fading 10s both
+.navbar-container a:hover {
+  color: #00d9ff;
+  background: rgba(0, 217, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.navbar-logo {
+  width: 50px;
+  height: 28px;
+  margin-right: 24px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.5));
+  transition: all 0.3s ease;
+}
+
+.navbar-logo:hover {
+  filter: drop-shadow(0 0 15px rgba(0, 217, 255, 1));
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Circle behind effect - Modernized */
+.circleBehind a:before,
+.circleBehind a:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 2px solid #00d9ff;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: transparent;
+  content: "";
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+.circleBehind a:after {
+  border-width: 1px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.circleBehind a:hover:before {
+  opacity: 1;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.circleBehind a:hover:after {
+  opacity: 1;
+  width: 70px;
+  height: 70px;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.w3-animate-fading {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 1rem;
   }
   
-  @keyframes fading{
-    0%{
-      opacity:0
-    }
-    50%{
-      opacity:1
-    }
-    100%{
-      opacity:1
-    }
+  .navbar-container a {
+    font-size: 12px;
+    margin: 4px;
+    padding: 8px 12px;
   }
+  
+  .navbar-logo {
+    width: 40px;
+    height: 22px;
+    margin-right: 12px;
+  }
+}

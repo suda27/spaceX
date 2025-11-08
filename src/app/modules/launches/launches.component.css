@@ -1,3 +1,7 @@
-.act-as-link{
-cursor: pointer;
+/* Launches component specific styles */
+.modern-container {
+  position: relative;
+  z-index: 1;
+  padding-top: 2rem;
+  min-height: 100vh;
 }

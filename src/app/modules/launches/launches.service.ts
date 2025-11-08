@@ -11,11 +11,12 @@ export class LaunchesService {
 
   constructor(private http: HttpClient) { }
 
-  private allLaunchApi = 'https://api.spacexdata.com/v3/launches';
-  private nextLaunchApi = 'https://api.spacexdata.com/v3/launches/next';
-  private pastLaunchApi = 'https://api.spacexdata.com/v3/launches/past';
-  private upcomingLaunchApi = 'https://api.spacexdata.com/v3/launches/upcoming';
-  private latestLaunchApi = 'https://api.spacexdata.com/v3/launches/latest';
+  private baseApiUrl = 'https://api.spacexdata.com/v4';
+  private allLaunchApi = `${this.baseApiUrl}/launches`;
+  private nextLaunchApi = `${this.baseApiUrl}/launches/next`;
+  private pastLaunchApi = `${this.baseApiUrl}/launches/past`;
+  private upcomingLaunchApi = `${this.baseApiUrl}/launches/upcoming`;
+  private latestLaunchApi = `${this.baseApiUrl}/launches/latest`;
 
 
   getNextLaunchInfo(): Observable<Launch> {
@@ -32,8 +33,8 @@ export class LaunchesService {
     );
   }
 
-  getUpcomingLaunchInfo(): Observable<Launch> {
-    return this.http.get<Launch>(this.upcomingLaunchApi).pipe(
+  getUpcomingLaunchInfo(): Observable<Launch | Launch[]> {
+    return this.http.get<Launch | Launch[]>(this.upcomingLaunchApi).pipe(
       tap(data => console.log('All : ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
